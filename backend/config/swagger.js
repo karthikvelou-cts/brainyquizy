@@ -36,7 +36,10 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: [path.join(__dirname, "../docs/*.yaml")],
+  apis: [
+    path.join(__dirname, "../docs/*.yaml"),
+    path.resolve(process.cwd(), "backend/docs/*.yaml"),
+  ],
 };
 
 export const swaggerSpec = swaggerJSDoc(options);
