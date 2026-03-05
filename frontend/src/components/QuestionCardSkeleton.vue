@@ -1,5 +1,5 @@
 <template>
-  <div class="animate-pulse rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+  <div class="animate-pulse rounded-2xl border border-slate-200/80 bg-white/80 p-5 shadow-sm backdrop-blur">
     <div class="h-3 w-40 rounded bg-slate-200"></div>
     <div class="mt-3 h-4 w-11/12 rounded bg-slate-200"></div>
     <div class="mt-2 h-4 w-10/12 rounded bg-slate-200"></div>

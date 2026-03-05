@@ -1,15 +1,15 @@
 <template>
-  <div class="mt-6 flex items-center justify-center gap-2" v-if="totalPages > 1">
+  <div class="mt-8 flex items-center justify-center gap-3" v-if="totalPages > 1">
     <button
-      class="rounded border px-3 py-1 text-sm"
+      class="btn-muted px-4 py-2 disabled:cursor-not-allowed disabled:opacity-60"
       :disabled="page <= 1"
       @click="$emit('change', page - 1)"
     >
       Prev
     </button>
-    <span class="text-sm text-slate-600">Page {{ page }} of {{ totalPages }}</span>
+    <span class="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-semibold text-slate-600">Page {{ page }} of {{ totalPages }}</span>
     <button
-      class="rounded border px-3 py-1 text-sm"
+      class="btn-primary px-4 py-2 disabled:cursor-not-allowed disabled:opacity-60"
       :disabled="page >= totalPages"
       @click="$emit('change', page + 1)"
     >

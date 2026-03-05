@@ -1,22 +1,37 @@
 <template>
-  <header class="border-b border-slate-200 bg-white">
+  <header class="sticky top-0 z-20 border-b border-slate-200/70 bg-white/75 backdrop-blur-lg">
     <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-      <RouterLink class="flex items-center gap-3" to="/">
+      <RouterLink class="flex items-center gap-3" to="/" aria-label="Go to home">
         <img
           :src="logo"
           alt="brainyquizy logo"
-          class="h-10 w-auto max-w-[180px] shrink-0 rounded-md object-contain"
+          class="h-10 w-auto max-w-[180px] shrink-0 rounded-lg object-contain"
         />
       </RouterLink>
-      <div class="flex items-center gap-4 text-sm font-medium text-slate-700">
-        <RouterLink to="/browse" class="hover:text-brand-600">Browse</RouterLink>
-        <RouterLink to="/categories" class="hover:text-brand-600">Categories</RouterLink>
-        <RouterLink v-if="auth.isAuthenticated && !auth.isAdmin" to="/dashboard" class="hover:text-brand-600">Dashboard</RouterLink>
-        <RouterLink v-if="auth.isAdmin" to="/admin" class="hover:text-brand-600">Admin</RouterLink>
-        <RouterLink v-if="!auth.isAuthenticated" to="/auth" class="rounded bg-brand-600 px-3 py-1.5 text-white">Login</RouterLink>
+      <div class="flex items-center gap-2 text-sm font-semibold">
+        <RouterLink to="/browse" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">Browse</RouterLink>
+        <RouterLink to="/categories" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">Categories</RouterLink>
+        <RouterLink to="/api-config" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">API Config</RouterLink>
+        <RouterLink
+          v-if="auth.isAuthenticated && !auth.isAdmin"
+          to="/dashboard"
+          class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700"
+        >
+          Dashboard
+        </RouterLink>
+        <RouterLink v-if="auth.isAdmin" to="/admin" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">
+          Admin
+        </RouterLink>
+        <RouterLink
+          v-if="!auth.isAuthenticated"
+          to="/auth"
+          class="btn-primary px-4 py-2 text-white"
+        >
+          Login
+        </RouterLink>
         <button
           v-else
-          class="rounded bg-slate-800 px-3 py-1.5 text-white"
+          class="btn-muted px-4 py-2"
           @click="logout"
         >
           Logout

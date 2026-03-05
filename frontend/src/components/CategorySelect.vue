@@ -1,7 +1,7 @@
 <template>
   <select
     v-model="model"
-    class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none"
+    class="field-input"
   >
     <option value="">Any Category</option>
     <option v-for="category in categories" :key="category._id" :value="category._id">

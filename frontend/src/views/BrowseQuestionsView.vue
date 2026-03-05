@@ -1,11 +1,17 @@
 <template>
-  <section>
-    <h1 class="mb-4 text-2xl font-bold text-slate-900">Browse Questions</h1>
+  <section class="space-y-6">
+    <div class="space-y-2">
+      <p class="kicker">Question Explorer</p>
+      <h1 class="page-title text-slate-900">Browse Questions</h1>
+      <p class="max-w-2xl text-sm text-slate-600">
+        Filter by category, difficulty, and type to quickly find the right quiz dataset.
+      </p>
+    </div>
 
-    <div class="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 md:grid-cols-5">
+    <div class="surface-panel grid gap-3 md:grid-cols-5">
       <CategorySelect :categories="store.categories" v-model="filters.category" />
       <DifficultyFilter v-model="filters.difficulty" />
-      <select v-model="filters.type" class="rounded-lg border border-slate-300 px-3 py-2 text-sm">
+      <select v-model="filters.type" class="field-input">
         <option value="">Any Type</option>
         <option value="multiple">Multiple Choice</option>
         <option value="boolean">True / False</option>
@@ -15,18 +21,23 @@
         type="number"
         min="1"
         max="50"
-        class="rounded-lg border border-slate-300 px-3 py-2 text-sm"
+        class="field-input"
         placeholder="Amount"
       />
-      <button class="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white" @click="loadQuestions(1)">Apply</button>
+      <button class="btn-primary" @click="loadQuestions(1)">Apply</button>
     </div>
 
-    <p v-if="store.error" class="mt-4 rounded bg-rose-50 p-3 text-rose-700">{{ store.error }}</p>
+    <p v-if="store.error" class="rounded-xl border border-rose-200 bg-rose-50/80 p-3 text-rose-700">{{ store.error }}</p>
 
-    <div class="mt-6 grid gap-4">
+    <div class="grid gap-4">
       <QuestionCardSkeleton v-if="store.loadingQuestions" v-for="n in 6" :key="`skeleton-${n}`" />
       <QuestionCard v-for="(question, idx) in store.questions" :key="idx" :question="question" />
-      <p v-if="!store.loadingQuestions && store.questions.length === 0" class="text-slate-600">No questions found.</p>
+      <div
+        v-if="!store.loadingQuestions && store.questions.length === 0"
+        class="surface-panel border-dashed text-center text-sm text-slate-600"
+      >
+        No questions found for this filter combination.
+      </div>
     </div>
 
     <Pagination
