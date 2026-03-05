@@ -12,7 +12,6 @@
       <div class="flex items-center gap-4">
         <RouterLink to="/browse" class="hover:text-brand-600">Browse</RouterLink>
         <RouterLink to="/categories" class="hover:text-brand-600">Categories</RouterLink>
-        <RouterLink to="/auth" class="hover:text-brand-600">Account</RouterLink>
       </div>
     </div>
   </footer>

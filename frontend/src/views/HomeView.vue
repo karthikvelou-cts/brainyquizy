@@ -21,7 +21,7 @@
           >
             Start Browsing
           </RouterLink>
-          <RouterLink
+          <RouterLink v-if="!auth.isAuthenticated"
             to="/auth"
             class="rounded-lg border border-white/40 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/20"
           >
