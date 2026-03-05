@@ -1,0 +1,24 @@
+openapi: 3.0.0
+info:
+  title: BrainAPI Trivia Endpoints
+  version: 1.0.0
+paths:
+  /api/auth/register:
+    post:
+      summary: Register user
+  /api/auth/login:
+    post:
+      summary: Login user
+  /api/categories:
+    get:
+      summary: Get categories
+    post:
+      summary: Create category (admin)
+  /api/questions:
+    get:
+      summary: Get trivia questions
+    post:
+      summary: Create question (admin)
+  /api/token:
+    get:
+      summary: Create session token

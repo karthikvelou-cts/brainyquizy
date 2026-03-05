@@ -1,0 +1,20 @@
+{
+  "questions": [
+    {
+      "categoryName": "Technology",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which company developed the Vue.js framework?",
+      "correct_answer": "Evan You",
+      "incorrect_answers": ["Google", "Meta", "Microsoft"]
+    },
+    {
+      "categoryName": "Sports",
+      "type": "boolean",
+      "difficulty": "medium",
+      "question": "A basketball team has five players on the court at one time.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    }
+  ]
+}
