@@ -3,7 +3,6 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
-import swaggerUi from "swagger-ui-express";
 import authRoutes from "./routes/authRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import questionRoutes from "./routes/questionRoutes.js";
@@ -41,13 +40,41 @@ app.use("/api/token", tokenRoutes);
 app.get("/api/docs.json", (req, res) => {
   res.status(200).json(swaggerSpec);
 });
-app.use(
-  "/api/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
-    swaggerOptions: { url: "/api/docs.json" },
-  })
-);
+const swaggerHtml = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainyQuizy API Docs</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5/swagger-ui.css" />
+    <style>
+      body { margin: 0; background: #f8fafc; }
+      #swagger-ui { max-width: 1200px; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@5/swagger-ui-standalone-preset.js"></script>
+    <script>
+      window.onload = () => {
+        window.ui = SwaggerUIBundle({
+          url: "/api/docs.json",
+          dom_id: "#swagger-ui",
+          deepLinking: true,
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+          layout: "StandaloneLayout",
+        });
+      };
+    </script>
+  </body>
+</html>`;
+
+app.get(["/api/docs", "/api/docs/"], (req, res) => {
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.status(200).send(swaggerHtml);
+});
 
 app.use(notFound);
 app.use(errorHandler);
