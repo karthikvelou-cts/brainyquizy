@@ -73,6 +73,9 @@
         <RouterLink to="/api-config" class="rounded-xl border border-slate-200/90 bg-white/90 p-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-700">
           API Config Builder
         </RouterLink>
+        <RouterLink to="/quiz" class="rounded-xl border border-slate-200/90 bg-white/90 p-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-700">
+          Play Quiz
+        </RouterLink>
         <RouterLink v-if="auth.isAdmin" to="/admin" class="rounded-xl border border-slate-200/90 bg-white/90 p-3 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-700">
           Admin Dashboard
         </RouterLink>

@@ -31,6 +31,7 @@ const swaggerDefinition = {
     { name: "Questions" },
     { name: "User Questions" },
     { name: "Token" },
+    { name: "Scores" },
   ],
 };
 

@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import BrowseQuestionsView from "../views/BrowseQuestionsView.vue";
 import CategoriesView from "../views/CategoriesView.vue";
 import ApiConfigView from "../views/ApiConfigView.vue";
+import QuizPlayView from "../views/QuizPlayView.vue";
 import AuthView from "../views/AuthView.vue";
 import AdminDashboardView from "../views/AdminDashboardView.vue";
 import UserDashboardView from "../views/UserDashboardView.vue";
@@ -14,6 +15,7 @@ const router = createRouter({
     { path: "/browse", name: "browse", component: BrowseQuestionsView },
     { path: "/categories", name: "categories", component: CategoriesView },
     { path: "/api-config", name: "api-config", component: ApiConfigView },
+    { path: "/quiz", name: "quiz", component: QuizPlayView },
     { path: "/auth", name: "auth", component: AuthView },
     {
       path: "/dashboard",

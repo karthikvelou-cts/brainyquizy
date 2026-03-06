@@ -67,6 +67,7 @@
         <button class="btn-muted" @click="copyText(fetchSnippet)">Copy Fetch Snippet</button>
         <button class="btn-muted" @click="copyText(curlSnippet)">Copy cURL</button>
         <button class="btn-muted" @click="testEndpoint">Test Endpoint</button>
+        <RouterLink class="btn-muted inline-flex items-center" :to="quizRouteTo">Use in Quiz Component</RouterLink>
       </div>
 
       <p v-if="message" class="rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-700">{{ message }}</p>
@@ -150,6 +151,18 @@ const formattedPreview = computed(() => JSON.stringify(preview.value, null, 2));
 const highlightedPreview = computed(() => syntaxHighlight(formattedPreview.value));
 const totalMatching = computed(() => preview.value?.pagination?.total ?? preview.value?.total ?? 0);
 const returnedCount = computed(() => preview.value?.results?.length ?? 0);
+const quizRouteTo = computed(() => ({
+  name: "quiz",
+  query: {
+    amount: form.amount,
+    category: form.category || undefined,
+    difficulty: form.difficulty || undefined,
+    type: form.type || undefined,
+    page: form.page,
+    limit: form.limit,
+    autoStart: "1",
+  },
+}));
 
 const escapeHtml = (text) => text
   .replace(/&/g, "&amp;")

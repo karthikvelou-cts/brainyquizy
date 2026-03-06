@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import questionRoutes from "./routes/questionRoutes.js";
 import tokenRoutes from "./routes/tokenRoutes.js";
+import scoreRoutes from "./routes/scoreRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import { swaggerSpec } from "./config/swagger.js";
 
@@ -37,6 +38,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/token", tokenRoutes);
+app.use("/api/scores", scoreRoutes);
 app.get("/api/docs.json", (req, res) => {
   res.status(200).json(swaggerSpec);
 });

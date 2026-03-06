@@ -393,6 +393,46 @@ paths:
         "404":
           description: Token not found
 
+  /api/scores/my:
+    get:
+      summary: Get authenticated user's quiz score history
+      tags: [Scores]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - in: query
+          name: limit
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+      responses:
+        "200":
+          description: User quiz score history
+    post:
+      summary: Save authenticated user's quiz score
+      tags: [Scores]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuizScoreWrite"
+      responses:
+        "201":
+          description: Score saved
+        "400":
+          description: Invalid score payload
+
 components:
   schemas:
     QuestionWrite:
@@ -449,3 +489,73 @@ components:
           type: array
           items:
             type: string
+
+    QuizScoreWrite:
+      type: object
+      required: [totalQuestions, correctAnswers, wrongAnswers, score, maxScore]
+      properties:
+        quizConfig:
+          type: object
+          properties:
+            amount:
+              type: integer
+              minimum: 1
+              maximum: 50
+            category:
+              type: string
+            difficulty:
+              type: string
+              enum: [easy, medium, hard]
+            type:
+              type: string
+              enum: [multiple, boolean]
+            page:
+              type: integer
+              minimum: 1
+            limit:
+              type: integer
+              minimum: 1
+              maximum: 50
+        proctoring:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+              example: true
+            terminatedForMalpractice:
+              type: boolean
+              example: false
+            violations:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: tab_switch
+                  message:
+                    type: string
+                    example: Tab switch detected. Quiz auto-submitted.
+                  at:
+                    type: string
+                    format: date-time
+        totalQuestions:
+          type: integer
+          minimum: 0
+          example: 10
+        correctAnswers:
+          type: integer
+          minimum: 0
+          example: 7
+        wrongAnswers:
+          type: integer
+          minimum: 0
+          example: 3
+        score:
+          type: number
+          minimum: 0
+          example: 7
+        maxScore:
+          type: number
+          minimum: 0
+          example: 10

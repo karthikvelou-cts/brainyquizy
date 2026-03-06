@@ -12,6 +12,7 @@
         <RouterLink to="/browse" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">Browse</RouterLink>
         <RouterLink to="/categories" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">Categories</RouterLink>
         <RouterLink to="/api-config" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">API Config</RouterLink>
+        <RouterLink to="/quiz" class="rounded-lg px-3 py-1.5 text-slate-700 transition hover:bg-white hover:text-brand-700">Play Quiz</RouterLink>
         <RouterLink
           v-if="auth.isAuthenticated && !auth.isAdmin"
           to="/dashboard"

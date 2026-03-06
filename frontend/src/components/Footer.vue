@@ -13,6 +13,7 @@
         <RouterLink to="/browse" class="transition hover:text-brand-700">Browse</RouterLink>
         <RouterLink to="/categories" class="transition hover:text-brand-700">Categories</RouterLink>
         <RouterLink to="/api-config" class="transition hover:text-brand-700">API Config</RouterLink>
+        <RouterLink to="/quiz" class="transition hover:text-brand-700">Play Quiz</RouterLink>
       </div>
     </div>
   </footer>
